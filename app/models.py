@@ -29,7 +29,7 @@ class Rotina(db.Model):
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
 
     # relacionamento: 1 rotina -> N execuções
-    execucoes = db.relationship('Execucao', backref='rotina', lazy=True)
+    execucoes = db.relationship('Execucao', backref='rotina', lazy=True, cascade='all, delete-orphan')
 
     def __repr__(self):
         return f"<Rotina {self.nome}>"
